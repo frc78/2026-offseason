@@ -1,4 +1,6 @@
-# FRC 78 AIR STRIKE 2026 Robot Code
+# FRC 78 AIR STRIKE 2026 Offseason Robot Code
+
+The offseason robot is 78's 2019 elevator mounted on a swerve drive.
 
 ## Simulating
 
