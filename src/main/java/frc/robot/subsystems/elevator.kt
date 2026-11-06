@@ -82,6 +82,7 @@ object elevator {
                         }
                     }
                 }
+            configurator.apply(config)
 
         }
 
