@@ -26,7 +26,8 @@ object elevator {
 
     private object Constants {
 
-        /* TODO write out the full ratio as a series of fractions multiplied together e.g 4.0/1.0 5.0/1.0 * 29.0 / 31.0 */
+        // TODO write out the full ratio as a series of fractions multiplied together e.g 4.0/1.0
+        //  5.0/1.0 * 29.0 / 31.0
         const val ELEVATOR_GEAR_RATIO = 13.2
         // TODO use units library (.inches) for all position measurements, including radius
         val ELEVATOR_RETRACTED_POSITION = 0.0
@@ -130,15 +131,17 @@ object elevator {
         // TODO use currentState as the subject of the when block
         when {
             CurrentState == Elevator.initial -> {
+                // TODO statorCurrenet will be POSITIVE when motoring (vs braking). Change this
+                //  comparison to use positive 10 amps
                 if (Elevator_motor.statorCurrent.value < (-10).amps) {
                     Elevator_motor.setPosition(0.rotations)
                     CurrentState = Elevator.home
                 }
             }
             // TODO all of these states share the same logic.
-            // Combine into a single block using the multi-condition syntax
-            // It's ok for the a button to take you to the home state when you're already
-            // in the home state
+            //  Combine into a single block using the multi-condition syntax
+            //  It's ok for the a button to take you to the home state when you're already
+            //  in the home state
             CurrentState == Elevator.home -> {
                 // TODO create semantic function names in OI instead of directly reading the
                 // controller
