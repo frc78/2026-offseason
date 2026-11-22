@@ -20,9 +20,9 @@ import edu.wpi.first.wpilibj.util.WPILibVersion
 import frc.robot.auto.*
 import frc.robot.generated.Telemetry
 import frc.robot.lib.hz
+import frc.robot.subsystems.Elevator
 import frc.robot.subsystems.SwerveDrivetrain
 import frc.robot.subsystems.SwerveDrivetrain.headingTimer
-import frc.robot.subsystems.elevator
 import org.littletonrobotics.junction.LoggedRobot
 import org.littletonrobotics.junction.Logger
 import org.littletonrobotics.junction.networktables.NT4Publisher
@@ -84,8 +84,8 @@ object Robot : LoggedRobot() {
         SwerveDrivetrain.periodic()
 
         // Execute actions for active states in all subsystems except drivetrain
-        elevator.state_transitions()
-        elevator.state_actions()
+        Elevator.stateTransitions()
+        Elevator.stateActions()
 
         // Update pose on Elastic
         field2d.robotPose = SwerveDrivetrain.state.Pose

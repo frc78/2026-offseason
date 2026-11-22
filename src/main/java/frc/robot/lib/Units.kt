@@ -14,6 +14,7 @@ import edu.wpi.first.units.Units.FeetPerSecond
 import edu.wpi.first.units.Units.Hertz
 import edu.wpi.first.units.Units.Inches
 import edu.wpi.first.units.Units.InchesPerSecond
+import edu.wpi.first.units.Units.InchesPerSecondPerSecond
 import edu.wpi.first.units.Units.KilogramSquareMeters
 import edu.wpi.first.units.Units.Kilograms
 import edu.wpi.first.units.Units.Meters
@@ -68,6 +69,8 @@ val Number.metersPerSecond: LinearVelocity
     get() = MetersPerSecond.of(this.toDouble())
 val Number.inchesPerSecond: LinearVelocity
     get() = InchesPerSecond.of(this.toDouble())
+val Number.inchesPerSecondPerSecond: LinearAcceleration
+    get() = InchesPerSecondPerSecond.of(this.toDouble())
 val Number.feetPerSecond: LinearVelocity
     get() = FeetPerSecond.of(this.toDouble())
 val Number.volts: Voltage
@@ -122,6 +125,8 @@ val Distance.centimeters
     get() = this.`in`(Centimeters)
 val LinearVelocity.metersPerSecond
     get() = this.`in`(MetersPerSecond)
+val LinearAcceleration.metersPerSecondPerSecond
+    get() = this.`in`(MetersPerSecondPerSecond)
 val AngularVelocity.radiansPerSecond
     get() = this.`in`(RadiansPerSecond)
 val AngularVelocity.rotationsPerSecond
@@ -155,6 +160,9 @@ fun Distance.toAngle(radius: Distance): Angle = Radians.of((this / radius).magni
 
 fun LinearVelocity.toAngularVelocity(radius: Distance): AngularVelocity =
     RadiansPerSecond.of(this.metersPerSecond / radius.meters)
+
+fun LinearAcceleration.toAngularAcceleration(radius: Distance): AngularAcceleration =
+    RadiansPerSecondPerSecond.of(this.metersPerSecondPerSecond / radius.meters)
 
 fun AngularVelocity.toLinearVelocity(radius: Distance): LinearVelocity =
     MetersPerSecond.of(radiansPerSecond * radius.meters)
